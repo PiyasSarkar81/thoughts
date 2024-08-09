@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Small2it
+{% endblock %}
+
+{% block content %}
+    <h1>Small2it</h1>
+    <p>Small2it is a blog about your thoughts that matter.</p>
+
+    <h3>
+        {% if Tweet.instance.pk %}
+            Edit
+        {% else %}
+            Create
+        {% endif %}
+            Tweet
+
+
+        <form method="post" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-warning">Save</button>
+        </form>
+        <a href="{% url 'tweet_list' %}" class="btn btn-primary">Back</a>
+    </h3>
+{% endblock %}
+
+{% block navbar %}
+    Small2it
+{% endblock %}
